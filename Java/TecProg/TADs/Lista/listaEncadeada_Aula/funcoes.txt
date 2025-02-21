@@ -1,0 +1,45 @@
+// 1. Incluir elemento em ordem crescente.
+
+    public void inserirEmOrdem(int dado) {
+        No novoNo = new No(dado);
+
+        // Caso a lista esteja vazia ou o novo dado seja menor que o cabeça
+        if (noInicial == null || noInicial.obterDado() >= novoNo.obterDado()) {
+            novoNo.definirProximo(noInicial);
+            noInicial = novoNo;
+        } else {
+            No noAtual = noInicial;
+            while (noAtual.obterProximo() != null && noAtual.obterProximo().obterDado() < novoNo.obterDado()) {
+                noAtual = noAtual.obterProximo();
+            }
+            novoNo.definirProximo(noAtual.obterProximo());
+            noAtual.definirProximo(novoNo);
+        }
+        totalDeElementos++;
+    }
+
+
+// 2. Excluir nó que possua um determinado dado.
+
+    public boolean excluirNo(int dado) {
+        No noAtual = noInicial;
+        No noAnterior = null;
+
+        while (noAtual != null && noAtual.obterDado() != dado) {
+            noAnterior = noAtual;
+            noAtual = noAtual.obterProximo();
+        }
+
+        if (noAtual == null) {
+            return false; // Dado não encontrado
+        }
+
+        if (noAnterior == null) {
+            noInicial = noAtual.obterProximo(); // O nó a ser excluído é o primeiro
+        } else {
+            noAnterior.definirProximo(noAtual.obterProximo()); // Excluir nó intermediário ou final
+        }
+
+        totalDeElementos--;
+        return true;
+    }

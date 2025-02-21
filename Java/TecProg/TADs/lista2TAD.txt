@@ -1,0 +1,102 @@
+/* Exercícios TP - Mateus Nogueira
+
+1.
+@Override
+    public int compararPilhas(PilhaEncadeada outraPilha) {
+        Pilha atual1 = this.inicial;
+        Pilha atual2 = outraPilha.inicial;
+
+        while(atual1 != null && atual2 != null) {
+            if(atual1.obterDado() != atual2.obterDado()) {
+                return 0;
+            }
+            atual1 = atual1.obterProximo();
+            atual2 = atual2.obterProximo();
+        }
+
+        if(atual1 != null || atual2 != null) {
+            return 0;
+        }
+
+        return 1;
+    }
+
+
+2.
+@Override
+public String inverterString(String frase) {
+    PilhaEncadeadaChar pilha = new PilhaEncadeadaChar();
+
+    for (int i = 0; i < frase.length(); i++) {
+        pilha.empilhar(frase.charAt(i));
+    }
+
+    StringBuilder fraseInvertida = new StringBuilder();
+
+    while (!pilha.verificarVazia()) {
+        fraseInvertida.append((char) pilha.obterTopo());
+        pilha.desempilhar();
+    }
+
+    return fraseInvertida.toString();
+}
+
+
+3.
+@Override
+public static boolean verificarParenteses(String expressao) {
+    PilhaEncadeadaChar pilha = new PilhaEncadeadaChar();
+
+    for (int i = 0; i < expressao.length(); i++) {
+        char caractere = expressao.charAt(i);
+
+        if (caractere == '(') {
+            pilha.empilhar(caractere);
+        } else if (caractere == ')') {
+            if (pilha.verificarVazia()) {
+                return false; 
+            } else {
+                pilha.desempilhar();
+            }
+        }
+    }
+    return pilha.verificarVazia();
+}
+
+
+4.
+@Override
+public void separarFilas(int[] filaOriginal, int[] filaImpares, int[] filaPares) {
+        int indexImpares = 0;
+        int indexPares = 0;
+
+        for (int i = 0; i < filaOriginal.length; i++) {
+            if (filaOriginal[i] % 2 == 0) {
+                filaPares[indexPares++] = filaOriginal[i];
+            } else {
+                filaImpares[indexImpares++] = filaOriginal[i];
+            }
+            filaOriginal[i] = 0; 
+        }
+}
+
+
+
+
+5.
+
+@Override
+ public static void inverterFila(int[] fila, int capacidade) {
+        int topo = -1;
+        int[] pilha = new int[capacidade];
+
+        int tamanhoFila = capacidade;
+        for (int i = 0; i < capacidade; i++) {
+            pilha[++topo] = fila[i];
+        }
+
+        for (int i = 0; i < capacidade; i++) {
+            fila[i] = pilha[topo--];
+        }
+    }
+ */
