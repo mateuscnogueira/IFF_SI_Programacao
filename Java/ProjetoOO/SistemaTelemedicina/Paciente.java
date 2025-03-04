@@ -2,18 +2,18 @@ package ProjetoOO.SistemaTelemedicina;
 
 import java.util.Scanner;
 
-public class Administrador extends Usuario {
+public class Paciente extends Usuario {
     Scanner leitor = new Scanner(System.in);
 
     private String dado;
-    private Administrador proximo;
+    private Paciente proximo;
 
     private String funcao = new String();
 
-    private static Administrador inicial = null;
+    private static Paciente inicial = null;
     private static int totalDeElementos = 0;
 
-    public Administrador(String nome, String cpf, String telefone, String endereco, String email, String senha) {
+    public Paciente(String nome, String cpf, String telefone, String endereco, String email, String senha) {
         super(nome, cpf, telefone, endereco, email, senha);
         this.funcao = "funcao";
         this.proximo = null;
@@ -33,23 +33,23 @@ public class Administrador extends Usuario {
         this.dado = dado;
     }
 
-    public Administrador obterProximo() {
+    public Paciente obterProximo() {
         return proximo;
     }
     public void definirProximo(Usuario proximo) {
-        this.proximo = (Administrador) proximo;
+        this.proximo = (Paciente) proximo;
     }
 
-    public void gerenciarAdministrador() {
+    public void gerenciarPaciente() {
         int opcao = -1;
         
         do {
-            System.out.println("Gerenciar Administrador\n");
+            System.out.println("Gerenciar Paciente\n");
     
             System.out.println("Opções: ");
-            System.out.println("1 - Cadastrar Administrador");
+            System.out.println("1 - Cadastrar Paciente");
             System.out.println("2 - Atualizar Dados");
-            System.out.println("3 - Remover Administrador");
+            System.out.println("3 - Remover Paciente");
             System.out.println("0 - Finalizar Gerenciamento\n");
 
             System.out.print("Digite a opção desejada: ");
@@ -59,15 +59,15 @@ public class Administrador extends Usuario {
     
             switch (opcao) {
                 case 1:
-                    cadastrarAdministrador();
+                    cadastrarPaciente();
                     break;
                 
                 case 2:
-                    editarAdministrador();
+                    editarPaciente();
                     break;
     
                 case 3:
-                    excluirAdministrador();
+                    excluirPaciente();
                     break;
 
                 case 0:
@@ -77,7 +77,7 @@ public class Administrador extends Usuario {
     
                 default:
                     System.out.println("Opção Inválida\n\n");
-                    gerenciarAdministrador();
+                    gerenciarPaciente();
                     break;
             }
         } while(opcao != 0);
@@ -88,8 +88,8 @@ public class Administrador extends Usuario {
 
     }
 
-    public void cadastrarAdministrador() {        
-        System.out.println("\n\nCadastro de Administrador\n");
+    public void cadastrarPaciente() {        
+        System.out.println("\n\nCadastro de Paciente\n");
         
         System.out.print("Insira o nome de usuário: ");
         this.nome = leitor.nextLine();
@@ -106,10 +106,10 @@ public class Administrador extends Usuario {
         System.out.print("Insira a função: ");
         this.funcao = leitor.nextLine();
 
-        Administrador novo = new Administrador(this.nome, this.cpf, this.telefone, this.endereco, this.email, this.senha);
+        Paciente novo = new Paciente(this.nome, this.cpf, this.telefone, this.endereco, this.email, this.senha);
         novo.setFuncao(this.funcao);
 
-        Administrador atual = this.inicial;
+        Paciente atual = this.inicial;
         
         if(atual != null) {
             while(atual.obterProximo() != null) {
@@ -125,11 +125,11 @@ public class Administrador extends Usuario {
         System.out.println("\nCadastro realizado com êxito!\n\n");
     }
 
-    public void editarAdministrador() {
-        Administrador atual = this.inicial;
+    public void editarPaciente() {
+        Paciente atual = this.inicial;
         String emailBuscado = new String();
 
-        System.out.println("\n\nEditar Administrador\n");
+        System.out.println("\n\nEditar Paciente\n");
 
         System.out.print("Insira o Username (email) que deseja editar: ");
         emailBuscado = leitor.nextLine();
@@ -210,13 +210,13 @@ public class Administrador extends Usuario {
         }
         else {
             System.out.println("\nEmail não encontrado, tente novamente!\n\n");
-            editarAdministrador();
+            editarPaciente();
         }
     }
 
-    public void excluirAdministrador() {
-        Administrador atual = this.inicial;
-        Administrador anterior = null;
+    public void excluirPaciente() {
+        Paciente atual = this.inicial;
+        Paciente anterior = null;
         String emailBuscado = new String();
     
         System.out.print("\nInsira o Username (email) que deseja excluir: ");
@@ -228,7 +228,7 @@ public class Administrador extends Usuario {
         }
     
         if (atual != null) {
-            System.out.print("Tem certeza que deseja excluir o administrador: " + atual.getEmail() + " ? (sim/não): ");
+            System.out.print("Tem certeza que deseja excluir o Paciente: " + atual.getEmail() + " ? (sim/não): ");
             String confirmacao = leitor.nextLine().toLowerCase(); //converte toda a string para minuscula.
     
             if (confirmacao.equals("sim")) {
@@ -237,13 +237,13 @@ public class Administrador extends Usuario {
                 } else {
                     anterior.definirProximo(atual.obterProximo());
                 }
-                System.out.println("\nAdministrador excluído com sucesso!\n\n");
+                System.out.println("\nPaciente excluído com sucesso!\n\n");
             } else {
                 System.out.println("\nOperação cancelada.\n\n");
             }
         } else {
             System.out.println("\nEmail não encontrado. Tente novamente!\n\n");
-            excluirAdministrador();
+            excluirPaciente();
         }
     }
     
@@ -251,7 +251,7 @@ public class Administrador extends Usuario {
     @Override
 	public String visualizarCadastros() { //toString
 		String elementos = new String();
-		Administrador atual = this.inicial;
+		Paciente atual = this.inicial;
 		while (atual != null) {
 			elementos += "Id: " + atual.getId_user() + "\n"
             + "Nome: " + atual.getNome() + "\n"
@@ -263,6 +263,6 @@ public class Administrador extends Usuario {
             + "---------------------------\n";
 			atual = atual.obterProximo();
 		}
-		return "Administradores Cadastrados: \n\n"+ elementos + "\n";
+		return "Pacientes Cadastrados: \n\n"+ elementos + "\n";
 	}
 }
