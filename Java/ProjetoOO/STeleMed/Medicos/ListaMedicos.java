@@ -106,7 +106,7 @@ public class ListaMedicos implements ColecaoDeUsuarios {
         String emailBuscado = leitor.nextLine();
 
         Elemento atual = this.inicial;
-        while(atual != null & !atual.obterMedico().getEmail().equals(emailBuscado)) {
+        while(atual != null && !atual.obterMedico().getEmail().equals(emailBuscado)) {
             atual = atual.obterProximo();
         }
 

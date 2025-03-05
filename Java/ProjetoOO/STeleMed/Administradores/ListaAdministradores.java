@@ -15,6 +15,14 @@ public class ListaAdministradores implements ColecaoDeUsuarios {
         this.totalDeAdministradores = 0;
     }
 
+    public Elemento getInicial() {
+        return inicial;
+    }
+
+    public int getTotalDeAdministradores() {
+        return totalDeAdministradores;
+    }
+
     public void cadastrarPrimeiroAdm(Administrador administrador) {
         Elemento novo = new Elemento(administrador);
     
@@ -38,7 +46,7 @@ public class ListaAdministradores implements ColecaoDeUsuarios {
         int opcao = -1;
         
         do {
-            System.out.println("Gerenciar Administrador\n");
+            System.out.println("\n\nGerenciar Administrador\n");
     
             System.out.println("Opções: ");
             System.out.println("1 - Cadastrar Administrador");
@@ -122,7 +130,7 @@ public class ListaAdministradores implements ColecaoDeUsuarios {
         String emailBuscado = leitor.nextLine();
 
         Elemento atual = this.inicial;
-        while(atual != null & !atual.obterAdministrador().getEmail().equals(emailBuscado)) {
+        while(atual != null && !atual.obterAdministrador().getEmail().equals(emailBuscado)) {
             atual = atual.obterProximo();
         }
 
@@ -196,6 +204,8 @@ public class ListaAdministradores implements ColecaoDeUsuarios {
                         break;
                 }
             } while (opcao != 0);
+        } else {
+            System.out.println("\nAdministrador não encontrado! Tente novamente.\n\n");
         }
     }
     @Override
@@ -255,9 +265,5 @@ public class ListaAdministradores implements ColecaoDeUsuarios {
         }
 
         return "Administradores Cadastrados: \n\n"+ elementos + "\n";
-    }
-    
-    public int totalDeAdministradores() {
-        return totalDeAdministradores;
     }
 }

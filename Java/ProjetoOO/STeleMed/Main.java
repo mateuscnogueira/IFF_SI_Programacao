@@ -1,39 +1,28 @@
 package ProjetoOO.STeleMed;
 
 import ProjetoOO.STeleMed.Administradores.*;
-import ProjetoOO.STeleMed.Medicos.ListaMedicos;
+import ProjetoOO.STeleMed.Medicos.*;
+import ProjetoOO.STeleMed.Pacientes.*;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        /*
-        Administrador admMestre = new Administrador("Administrador", null, null, null, "adm@gmail.com", "@admin", "Administrador Mestre");
-
-        //Melhor utilizar assim:
-        ListaAdministradores listaAdministradores = new ListaAdministradores();
-        listaAdministradores.cadastrarPrimeiroAdm(admMestre);
-        
-        Porém também pode utilizar assim:
-        ColecaoDeUsuarios listaMedicos = new ListaMedicos();
-        ColecaoDeUsuarios listaAdministradores = new ListaAdministradores();
-        ((ListaAdministradores) listaAdministradores).cadastrarPrimeiroAdm(admMestre);
-        
-        System.out.println(listaAdministradores.visualizarCadastros());
-        
-        admMestre.visualizarMenu();
-        System.out.println(listaMedicos.visualizarCadastros());
-        */
     
-        Administrador administrador = new Administrador(null, null, null, null, null, null, null);
+        Administrador administrador = new Administrador("Adm Geral", "", "", "", "adm@gmail.com", "admin@", "Administrador Mestre");
 
-        /*
-        primeira forma de cadastrar o admMestre -> (Administrador - linha 22)
-
-        outra forma de cadastrar o admMestre:
+        /* Cadastro do ADM Mestre na Lista Encadeada
+        primeira forma de cadastrar o admMestre é na classe Administrador -> (linha 22)
+        
+        outra forma de cadastrar o admMestre, só q na Main:
         administrador.getListaAdministradores().cadastrarPrimeiroAdm(administrador);
         */
-        
+        //administrador.realizarLogin();
         administrador.visualizarMenu();
+        
+
+        /* Medico medTeste = new Medico(null, null, null, null, null, null, null, null);
+
+        medTeste.visualizarMenu(); */
     }
 }
