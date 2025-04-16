@@ -1,4 +1,4 @@
-package P2_MateusNogueira;
+package p2_tp_mateusnogueira;
 
 public class Personalidade {
     private String nome = new String();

@@ -1,11 +1,10 @@
-package P2_MateusNogueira;
+package p2_tp_mateusnogueira;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
 
 public class ManipulaDataset {
 
@@ -15,7 +14,7 @@ public class ManipulaDataset {
         
         System.out.printf("\nConteúdo do arquivo texto:\n");
 
-        arquivoTextoLeitura = new FileReader("/Users/aluno/Downloads/AgeDataset-V1.csv");
+        arquivoTextoLeitura = new FileReader("/Users/nog/Downloads/AgeDataset-V1.csv");
         leituraBufferizada = new BufferedReader(arquivoTextoLeitura);
         leituraBufferizada.readLine();
 
@@ -41,6 +40,8 @@ public class ManipulaDataset {
 		
 		int atributoAtual = 0;
 		
+		//System.out.println(linha);
+		
 		for(int i = 0; i < linha.length(); i++) {
 			
 			switch(linha.charAt(i)) {
@@ -59,9 +60,10 @@ public class ManipulaDataset {
 				default:
 					personalidadeString[atributoAtual] += linha.charAt(i);
 			}
-            	
+			
 		}
 		
+        
 		if(personalidadeString[6] == "") {
 			personalidadeString[6] = "0";
 		}
@@ -74,11 +76,12 @@ public class ManipulaDataset {
 		
 		return new Personalidade(personalidadeString[1], Integer.parseInt(personalidadeString[6]), personalidadeString[2], personalidadeString[3], personalidadeString[4], 
         personalidadeString[5], personalidadeString[8], Integer.parseInt(personalidadeString[7]), Integer.parseInt(personalidadeString[9]));
+		
 	}
 
     public static void escreverNoArquivoCsv(ColecaoDePersonalidades colecao) throws IOException{
 		
-        String nomeDoArquivo = "/Users/aluno/Downloads/Personalidades100.csv";
+        String nomeDoArquivo = "/Users/nog/Downloads/Personalidades100Teste.csv";
 		FileWriter arquivoTextoEscrita = new FileWriter(nomeDoArquivo, true);
 
 		int i = 0;
@@ -92,7 +95,6 @@ public class ManipulaDataset {
             } else {
                 linha += personalidade.obterNome() + delimitador;
             }
-
             
             if(contemCaractere(personalidade.getDescricao(), delimitador)) {
                 linha += '"' + personalidade.getDescricao() + '"' + delimitador;
@@ -117,11 +119,11 @@ public class ManipulaDataset {
             } else {
                 linha += personalidade.getProfissao() + delimitador;
             }
-
-            linha += personalidade.obterAnoDeNascimento() + delimitador;
             
-            linha += personalidade.getAnoDaMorte() + delimitador;
+            linha += personalidade.obterAnoDeNascimento() + delimitador;
 
+            linha += personalidade.getAnoDaMorte() + delimitador;
+            
             if(contemCaractere(personalidade.getCausaDaMorte(), delimitador)) {
                 linha += '"' + personalidade.getCausaDaMorte() + '"' + delimitador;
             } else {
@@ -150,5 +152,6 @@ public class ManipulaDataset {
     	return false;
     }
 }
+
 
 // /Users/nog/Downloads/AgeDataset-V1.csv

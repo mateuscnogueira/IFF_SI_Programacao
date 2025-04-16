@@ -1,4 +1,4 @@
-package Arquivo.P2_TP;
+package p2_tp_mateusnogueira;
 
 public class OrdenarPorNomeComBoubbleSort implements Ordenador {
 
@@ -14,8 +14,7 @@ public class OrdenarPorNomeComBoubbleSort implements Ordenador {
                     colecao.trocarPosicaoEntrePersonalidades(j, j + 1);
                     existiuTroca = true;
                 }
-                //verificando se o nome1 é >,< ou = ao nome2.
-                //compareTo() retorna valor positivo se o primeiro for maior que o segundo, ai é realizado a troca.
+                //verificando se o nome1 é >,< ou = ao nome2. compareTo() retorna valor positivo se o primeiro for maior que o segundo, ai é realizado a troca.
             }
         } while (existiuTroca);
     }

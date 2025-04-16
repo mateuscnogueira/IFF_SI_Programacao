@@ -1,4 +1,4 @@
-package P2_MateusNogueira;
+package p2_tp_mateusnogueira;
 
 public class VetorPersonalidades implements ColecaoDePersonalidades {
 
@@ -12,8 +12,12 @@ public class VetorPersonalidades implements ColecaoDePersonalidades {
 
     @Override
     public void adicionarPersonalidade(Personalidade nomeDaPersonalidade) {
-        vetorDePersonalidades[totalDePersonalidades] = nomeDaPersonalidade;
-        totalDePersonalidades++;
+        if(totalDePersonalidades < vetorDePersonalidades.length) {
+            vetorDePersonalidades[totalDePersonalidades] = nomeDaPersonalidade;
+            totalDePersonalidades++;
+        } else {
+            System.out.println("Não foi possivel adicionar a personalidade, pois o vetor alcançou o tamanho maximo");
+        }
     }
 
     @Override
@@ -63,6 +67,11 @@ public class VetorPersonalidades implements ColecaoDePersonalidades {
         if(posicaoDaPersonalidade >= 0 && posicaoDaPersonalidade < totalDePersonalidades) {
             vetorDePersonalidades[posicaoDaPersonalidade] = novaPersonalidade;
         }
+    }
+
+    @Override
+    public void ordenarPersonalidade(Ordenador ordenador) {
+        ordenador.ordenar(this);
     } 
     
 }

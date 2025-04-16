@@ -1,4 +1,4 @@
-package Arquivo.P2_TP;
+package p2_tp_mateusnogueira;
 
 public interface ColecaoDePersonalidades {
     

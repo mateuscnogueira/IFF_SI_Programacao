@@ -1,4 +1,4 @@
-package P2_TP;
+package p2_tp_mateusnogueira;
 
 import java.io.IOException;
 
@@ -76,7 +76,6 @@ public class ProgramaPersonalidades {
         System.out.println("Lendo personalidades do arquivo CSV...");
         // Ler personalidades do arquivo CSV e adicionar à coleção
         ManipulaDataset.lerDoArquivoCsv(colecaoLista, 100);
-        // ordenacao da lista demorou
         // 10000 ordenou em menos de 30s
         // 100000 leitura concluida em 1min e pouco. Já a ordenação cancelei com 5min 12s total, não apresentou.
     
@@ -86,16 +85,16 @@ public class ProgramaPersonalidades {
         Personalidade nova = new Personalidade("Mat Nog", 2002, "Estudante do IFF", "Masculino", "Brasil", "Estudante", "To vivo", 9999, 9999);
         colecaoLista.adicionarPersonalidade(nova);
     
-        colecaoLista.excluirPersonalidade("Jean-Philippe Rameau");
+        //colecaoLista.excluirPersonalidade("Indira Gandhi");
     
-        //colecao.trocarPosicaoEntrePersonalidades(99, 100);
+        colecaoLista.trocarPosicaoEntrePersonalidades(99, 100);
     
         Personalidade novo2 = new Personalidade("Bibs Kaut", 2004, "Estudante da FMC", "Feminino", "Brasil", "Médica", "Vivona", 9999, 9999);
-        //colecao.alterarPersonalidade(98, novo2);
+        colecaoLista.alterarPersonalidade(98, novo2);
 
 
-        Ordenador ordenadorNome = new OrdenarPorNomeComBoubbleSort();
-        colecaoLista.ordenarPersonalidade(ordenadorNome);
+        //Ordenador ordenadorNome = new OrdenarPorNomeComBoubbleSort();
+        //ordenadorNome.ordenar(colecaoLista);
     
         //Ordenador ordenadorAno = new OrdenarPorAnoComQuickSort();
         //ordenadorAno.ordenar(colecaoVetor);
