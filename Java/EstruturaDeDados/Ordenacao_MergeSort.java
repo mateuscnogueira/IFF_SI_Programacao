@@ -1,6 +1,6 @@
-package Java.EstruturaDeDados.MergeSort;
+package EstruturaDeDados;
 
-public class Main {
+public class Ordenacao_MergeSort {
     public static void main(String[] args) {
         int[] vetor = { 38, 27, 43, 3, 9, 82, 10 };
 
